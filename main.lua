@@ -17,6 +17,11 @@ main.Parent = gui
 if game.PlaceId == 6677985923 then
 	is_it_whitelist = true
 	
+elseif game.PlaceId == 32990482 then
+
+elseif game.PlaceId == 5985232436 then
+	is_it_whitelist = true
+	
 end
 --[[ varible ]]--
 picture_button1 = "http://www.roblox.com/asset/?id=9372382070"
@@ -334,15 +339,19 @@ else
 		page2_button1.Parent = page2
 		
 		page2_button1.MouseButton1Click:Connect(function()
-			oldCFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+			oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 			for i,v in pairs(game.Players:GetChildren()) do
 				if v.Name ~= game.Players.LocalPlayer.Name then
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.ClassicSword)	
-					game.Players.LocalPlayer.Character.Torso.CFrame = v.Character.Torso.CFrame
+					repeat
+						game:GetService("VirtualUser"):ClickButton1(Vector2.new(125,125)) 
+						game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.ClassicSword)	
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Character.HumanoidRootPart.CFrame.x,v.Character.HumanoidRootPart.CFrame.y,v.Character.HumanoidRootPart.CFrame.z-2)
+						wait(0.01)
+					until v.Character.Humanoid.Health < 1
 					wait(1)
 				end
 			end
-			game.Players.LocalPlayer.Character.Torso.CFrame = oldCFrame
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
 		end)
 		
 		page2_button2 = Instance.new("TextButton")
@@ -390,7 +399,44 @@ else
 
 		end)
 		
+	elseif game.PlaceId == 5985232436 then
+		page2_button1 = Instance.new("TextButton")
+		page2_button1.Size = UDim2.new(1,0,0.05,0)
+		page2_button1.Text = "I am sad. (can't be infected)"
+		page2_button1.Font = "Cartoon"
+		page1_button1.BackgroundTransparency = 0.5
+		page2_button1.TextScaled = true
+		page2_button1.TextColor3 = Color3.fromRGB(255,255,255)
+		page2_button1.TextStrokeTransparency = 0
+		page2_button1.Parent = page2
 		
+		page2_button1.MouseButton1Click:Connect(function()
+			game.Players.LocalPlayer.Character.Stats:Destroy()
+			game.Players.LocalPlayer.Character.Infected:Destroy()
+			game.Players.LocalPlayer.Character.Ragdoll:Destroy()
+			game.Players.LocalPlayer.Character.Downed:Destroy()
+			game.Players.LocalPlayer.Character.HumanoidInit:Destroy()
+
+		end)
+		
+		page2_button2 = Instance.new("TextButton")
+		page2_button2.Size = UDim2.new(1,0,0.05,0)
+		page2_button2.Text = "I am speed (no more cooldown and must unequiped)"
+		page2_button2.Font = "Cartoon"
+		page1_button2.BackgroundTransparency = 0.5
+		page2_button2.TextScaled = true
+		page2_button2.TextColor3 = Color3.fromRGB(255,255,255)
+		page2_button2.TextStrokeTransparency = 0
+		page2_button2.Parent = page2
+		
+		page2_button2.MouseButton1Click:Connect(function()
+			for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+				if v.ClassName == "Tool" then
+					v.Cooldown.Value = 0.001
+				end
+			end
+		end)
+	
 	end
 	
 	
@@ -400,20 +446,127 @@ end
 
 --[[ page 3 ]]--
 
-page3 = Instance.new("TextLabel")
-page3.BackgroundColor3 = Color3.fromRGB(170,85,255)
+page3 = Instance.new("ScrollingFrame")
+page3.BackgroundColor3 = Color3.fromRGB(240,240,240)
 page3.BackgroundTransparency = 1
-page3.Size = UDim2.new(1,0,0.748,0)
 page3.Position = UDim2.new(0,0,0.117,0)
-page3.Font = "Cartoon"
-page3.Text = "Nothing Yet. Checkback Later."
-page3.TextScaled = true
-page3.TextColor3 = Color3.fromRGB(255,255,255)
-page3.TextStrokeTransparency = 0
-page3.Parent = frame
+page3.Size = UDim2.new(1,0,1,0)
 page3.Visible = false
+page3.Parent = frame
+	
+page3_uilistlayout = Instance.new("UIListLayout")
+page3_uilistlayout.SortOrder = "LayoutOrder"
+page3_uilistlayout.Parent = page3
+
+page3_button1 = Instance.new("TextButton")
+page3_button1.Size = UDim2.new(1,0,0.05,0)
+page3_button1.Text = "Fly"
+page3_button1.Font = "Cartoon"
+page3_button1.BackgroundTransparency = 0.5
+page3_button1.TextScaled = true
+page3_button1.TextColor3 = Color3.fromRGB(255,255,255)
+page3_button1.TextStrokeTransparency = 0
+page3_button1.Parent = page3
+
+page3_button1.MouseButton1Click:Connect(function()
+
+	fly()
+
+end)
+
+page3_button1.MouseEnter:Connect(function()
+		desc.Visible = true
+		desc_text.Text = "Made by 4xex on V3rmillion."
+end)
+	
+page3_button1.MouseLeave:Connect(function()
+		desc.Visible = false
+end)
 
 
+page3_button2 = Instance.new("TextButton")
+page3_button2.Size = UDim2.new(1,0,0.05,0)
+page3_button2.Text = "Btools"
+page3_button2.Font = "Cartoon"
+page3_button2.BackgroundTransparency = 0.5
+page3_button2.TextScaled = true
+page3_button2.TextColor3 = Color3.fromRGB(255,255,255)
+page3_button2.TextStrokeTransparency = 0
+page3_button2.Parent = page3
+
+page3_button2.MouseButton1Click:Connect(function()
+
+	a = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+	a.BinType = 2
+	b = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+	b.BinType = 3
+	c = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+	c.BinType = 4
+
+end)
+
+page3_button2.MouseEnter:Connect(function()
+		desc.Visible = true
+		desc_text.Text = "Get btools for some adventage."
+end)
+	
+page3_button2.MouseLeave:Connect(function()
+		desc.Visible = false
+end)
+
+page3_button3 = Instance.new("TextButton")
+page3_button3.Size = UDim2.new(1,0,0.05,0)
+page3_button3.Text = "Rejoin"
+page3_button3.Font = "Cartoon"
+page3_button3.BackgroundTransparency = 0.5
+page3_button3.TextScaled = true
+page3_button3.TextColor3 = Color3.fromRGB(255,255,255)
+page3_button3.TextStrokeTransparency = 0
+page3_button3.Parent = page3
+
+page3_button3.MouseButton1Click:Connect(function()
+
+	game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+
+end)
+
+page3_button3.MouseEnter:Connect(function()
+		desc.Visible = true
+		desc_text.Text = "Rejoin to fix some script , that currently break."
+end)
+	
+page3_button3.MouseLeave:Connect(function()
+		desc.Visible = false
+end)
+
+page3_button4 = Instance.new("TextButton")
+page3_button4.Size = UDim2.new(1,0,0.05,0)
+page3_button4.Text = "Physic Tool"
+page3_button4.Font = "Cartoon"
+page3_button4.BackgroundTransparency = 0.5
+page3_button4.TextScaled = true
+page3_button4.TextColor3 = Color3.fromRGB(255,255,255)
+page3_button4.TextStrokeTransparency = 0
+page3_button4.Parent = page3
+
+page3_button4.MouseButton1Click:Connect(function()
+
+	get_physic_tool()
+
+end)
+		
+page3_button4.MouseEnter:Connect(function()
+		desc.Visible = true
+		desc_text.Text = "Made by me_ozoneYT on Youtube."
+end)
+	
+page3_button4.MouseLeave:Connect(function()
+		desc.Visible = false
+end)
+
+		
+		
+		
 --[[ page 4 ]]--
 
 page4 = Instance.new("Frame")
@@ -584,6 +737,385 @@ end)
 
 -- [[function]] --
 
+function get_physic_tool()
+--by me_ozoneYT YT chanel :https://www.youtube.com/channel/UCOUFlqujCTz0UfBsrNbvJFA
+
+local function a(b, c)
+    local d = getfenv(c)
+    local e =
+        setmetatable(
+        {},
+        {__index = function(self, f)
+                if f == "script" then
+                    return b
+                else
+                    return d[f]
+                end
+            end}
+    )
+    setfenv(c, e)
+    return c
+end
+
+local g = game:GetService("Players")
+local h = sethiddenproperty or set_hidden_property or set_hidden_prop
+local i = setsimulationradius or set_simulation_radius
+local j = nil
+local k = {}
+local l = Instance.new("Model")
+l.Parent = game:GetService("Lighting")
+local m = Instance.new("Tool")
+local n = Instance.new("Part")
+local o = Instance.new("Script")
+local p = Instance.new("LocalScript")
+m.Name = "move tool"
+m.Parent = l
+m.Grip = CFrame.new(0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+m.GripForward = Vector3.new(-0, -1, -0)
+m.GripRight = Vector3.new(0, 0, 1)
+m.GripUp = Vector3.new(1, 0, 0)
+n.Name = "Handle"
+n.Parent = m
+n.CFrame = CFrame.new(-17.2635937, 15.4915619, 46, 0, 1, 0, 1, 0, 0, 0, 0, -1)
+n.Orientation = Vector3.new(0, 180, 90)
+n.Position = Vector3.new(-17.2635937, 15.4915619, 46)
+n.Rotation = Vector3.new(-180, 0, -90)
+n.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+n.Transparency = 1
+n.Size = Vector3.new(1, 1.20000005, 1)
+n.BottomSurface = Enum.SurfaceType.Weld
+n.BrickColor = BrickColor.new("Really black")
+n.Material = Enum.Material.Metal
+n.TopSurface = Enum.SurfaceType.Smooth
+n.brickColor = BrickColor.new("Really black")
+o.Name = "LineConnect"
+o.Parent = m
+table.insert(
+    k,
+    a(
+        o,
+        function()
+            wait()
+            local q = script.Part2
+            local r = script.Part1.Value
+            local s = script.Part2.Value
+            local t = script.Par.Value
+            local color = script.Color
+            local u = Instance.new("Part")
+            u.TopSurface = 0
+            u.BottomSurface = 0
+            u.Reflectance = .5
+            u.Name = "Laser"
+            u.Locked = true
+            u.CanCollide = false
+            u.Anchored = true
+            u.formFactor = 0
+            u.Size = Vector3.new(1, 1, 1)
+            local v = Instance.new("BlockMesh")
+            v.Parent = u
+            while true do
+                if q.Value == nil then
+                    break
+                end
+                if r == nil or s == nil or t == nil then
+                    break
+                end
+                if r.Parent == nil or s.Parent == nil then
+                    break
+                end
+                if t.Parent == nil then
+                    break
+                end
+                local w = CFrame.new(r.Position, s.Position)
+                local dist = (r.Position - s.Position).magnitude
+                u.Parent = t
+                u.BrickColor = color.Value.BrickColor
+                u.Reflectance = color.Value.Reflectance
+                u.Transparency = color.Value.Transparency
+                u.CFrame = CFrame.new(r.Position + w.lookVector * dist / 2)
+                u.CFrame = CFrame.new(u.Position, s.Position)
+                v.Scale = Vector3.new(.25, .25, dist)
+                wait()
+            end
+            u:remove()
+            script:remove()
+        end
+    )
+)
+o.Disabled = true
+p.Name = "MainScript"
+p.Parent = m
+table.insert(
+    k,
+    a(
+        p,
+        function()
+            wait()
+            tool = script.Parent
+            lineconnect = tool.LineConnect
+            object = nil
+            mousedown = false
+            found = false
+            BP = Instance.new("BodyPosition")
+            BP.maxForce = Vector3.new(math.huge * math.huge, math.huge * math.huge, math.huge * math.huge)
+            BP.P = BP.P * 1.1
+            dist = nil
+            point = Instance.new("Part")
+            point.Locked = true
+            point.Anchored = true
+            point.formFactor = 0
+            point.Shape = 0
+            point.BrickColor = BrickColor.Black()
+            point.Size = Vector3.new(1, 1, 1)
+            point.CanCollide = false
+            local v = Instance.new("SpecialMesh")
+            v.MeshType = "Sphere"
+            v.Scale = Vector3.new(.7, .7, .7)
+            v.Parent = point
+            handle = tool.Handle
+            front = tool.Handle
+            color = tool.Handle
+            objval = nil
+            local x = false
+            local y = BP:clone()
+            y.maxForce = Vector3.new(30000, 30000, 30000)
+            local function z(r, s, t)
+                local A = Instance.new("ObjectValue")
+                A.Value = r
+                A.Name = "Part1"
+                local B = Instance.new("ObjectValue")
+                B.Value = s
+                B.Name = "Part2"
+                local C = Instance.new("ObjectValue")
+                C.Value = t
+                C.Name = "Par"
+                local D = Instance.new("ObjectValue")
+                D.Value = color
+                D.Name = "Color"
+                local E = lineconnect:clone()
+                E.Disabled = false
+                A.Parent = E
+                B.Parent = E
+                C.Parent = E
+                D.Parent = E
+                E.Parent = workspace
+                if s == object then
+                    objval = B
+                end
+            end
+            local function F(G)
+                if mousedown == true then
+                    return
+                end
+                mousedown = true
+                coroutine.resume(
+                    coroutine.create(
+                        function()
+                            local H = point:clone()
+                            H.Parent = tool
+                            z(front, H, workspace)
+                            while mousedown == true do
+                                H.Parent = tool
+                                if object == nil then
+                                    if G.Target == nil then
+                                        local w = CFrame.new(front.Position, G.Hit.p)
+                                        H.CFrame = CFrame.new(front.Position + w.lookVector * 1000)
+                                    else
+                                        H.CFrame = CFrame.new(G.Hit.p)
+                                    end
+                                else
+                                    z(front, object, workspace)
+                                    break
+                                end
+                                wait()
+                            end
+                            H:remove()
+                        end
+                    )
+                )
+                while mousedown == true do
+                    if G.Target ~= nil then
+                        local I = G.Target
+                        if I.Anchored == false then
+                            object = I
+                            dist = (object.Position - front.Position).magnitude
+                            break
+                        end
+                    end
+                    wait()
+                end
+                while mousedown == true do
+                    if object.Parent == nil then
+                        break
+                    end
+                    local w = CFrame.new(front.Position, G.Hit.p)
+                    BP.Parent = object
+                    BP.position = front.Position + w.lookVector * dist
+                    wait()
+                end
+                BP:remove()
+                object = nil
+                objval.Value = nil
+            end
+            local function J(K, G)
+                local K = K:lower()
+                local L = false
+                if K == "q" then
+                    if dist >= 5 then
+                        dist = dist - 10
+                    end
+                end
+                if K == "r" then
+                    if object == nil then
+                        return
+                    end
+                    for M, N in pairs(object:children()) do
+                        if N.className == "BodyGyro" then
+                            return nil
+                        end
+                    end
+                    BG = Instance.new("BodyGyro")
+                    BG.maxTorque = Vector3.new(math.huge, math.huge, math.huge)
+                    BG.cframe = CFrame.new(object.CFrame.p)
+                    BG.Parent = object
+                    repeat
+                        wait()
+                    until object.CFrame == CFrame.new(object.CFrame.p)
+                    BG.Parent = nil
+                    if object == nil then
+                        return
+                    end
+                    for M, N in pairs(object:children()) do
+                        if N.className == "BodyGyro" then
+                            N.Parent = nil
+                        end
+                    end
+                    object.Velocity = Vector3.new(0, 0, 0)
+                    object.RotVelocity = Vector3.new(0, 0, 0)
+                    object.Orientation = Vector3.new(0, 0, 0)
+                end
+                if K == "e" then
+                    dist = dist + 10
+                end
+                if K == "t" then
+                    if dist ~= 10 then
+                        dist = 10
+                    end
+                end
+                if K == "y" then
+                    if dist ~= 200 then
+                        dist = 200
+                    end
+                end
+                if K == "=" then
+                    BP.P = BP.P * 1.5
+                end
+                if K == "-" then
+                    BP.P = BP.P * 0.5
+                end
+                if K == "k" then
+                    if h then
+                        if j == nil then
+                            j =
+                                game:GetService("RunService").RenderStepped:Connect(
+                                function()
+                                    pcall(
+                                        function()
+                                            settings().Physics.AllowSleep = false
+                                            h(g.LocalPlayer, "SimulationRadius", math.huge)
+                                            h(g.LocalPlayer, "MaxSimulationRadius", math.huge)
+                                            g.LocalPlayer.MaximumSimulationRadius = math.huge
+                                            g.LocalPlayer.ReplicationFocus = workspace
+                                        end
+                                    )
+                                end
+                            )
+                            game:GetService("StarterGui"):SetCore(
+                                "SendNotification",
+                                {Title = "Simple Net", Text = "Enabled"}
+                            )
+                        else
+                            j:Disconnect()
+                            wait()
+                            j = nil
+                            if i then
+                                i(139, 139)
+                            else
+                                h(g.LocalPlayer, "MaximumSimulationRadius", 139)
+                                h(g.LocalPlayer, "SimulationRadius", 139)
+                            end
+                            wait()
+                            game:GetService("StarterGui"):SetCore(
+                                "SendNotification",
+                                {Title = "Simple Net", Text = "Disabled"}
+                            )
+                        end
+                    else
+                        game:GetService("StarterGui"):SetCore(
+                            "SendNotification",
+                            {Title = "Script Error", Text = "Missing sethiddenproperty"}
+                        )
+                    end
+                end
+            end
+            local function O(G)
+                keymouse = G
+                local P = tool.Parent
+                human = P.Humanoid
+                human.Changed:connect(
+                    function()
+                        if human.Health == 0 then
+                            mousedown = false
+                            BP:remove()
+                            point:remove()
+                            tool:remove()
+                        end
+                    end
+                )
+                G.Button1Down:connect(
+                    function()
+                        F(G)
+                    end
+                )
+                G.Button1Up:connect(
+                    function()
+                        mousedown = false
+                    end
+                )
+                G.KeyDown:connect(
+                    function(K)
+                        J(K, G)
+                    end
+                )
+                G.Icon = "rbxasset://textures\\GunCursor.png"
+            end
+            tool.Equipped:connect(O)
+        end
+    )
+)
+game:GetService'Players':Chat("fe btool move tool")
+for Q, N in pairs(l:GetChildren()) do
+    N.Parent = game:GetService("Players").LocalPlayer.Backpack
+    pcall(
+        function()
+            N:MakeJoints()
+        end
+    )
+end
+l:Destroy()
+loadstring(game:HttpGet(('https://pastebin.com/raw/8X8LeApF'),true))()
+for Q, N in pairs(k) do
+    spawn(
+        function()
+            pcall(N)
+        end
+    )
+end
+end
+
+function fly()
+loadstring(game:HttpGet(('https://pastebin.com/raw/WxmvCLLH'),true))()
+end
 
 -- [[while true do]]--
 
@@ -601,7 +1133,8 @@ wait(0.001)
 						for i1,v1 in pairs(ty_but:GetChildren()) do
 							if v1.Name ~= "Insane Upgrader" or v1.Name ~= "Millionaire Maker - $1M/SECOND!" then
 								wait(0.001)
-								game.Players.LocalPlayer.Character.Torso.CFrame = v1.Head.CFrame
+								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v1.Head.CFrame
+
 							end
 						end
 					end
