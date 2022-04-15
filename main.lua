@@ -379,7 +379,8 @@ page4_desc.Parent = page4
 page4_desc.Visible = true
 
 page4_button1 = Instance.new("TextButton")
-page4_button1.Size = UDim2.new(1,0,0.05,0)
+page4_button1.Position = UDim2.new(1,0,0.117,0)
+page4_button1.Size = UDim2.new(1,0,0.2,0)
 page4_button1.Text = "Destroy GUI/HUD"
 page4_button1.Font = "Cartoon"
 page4_button1.BackgroundTransparency = 0.5
