@@ -312,11 +312,15 @@ if is_it_whitelist == false then
 else
 	page2 = Instance.new("ScrollingFrame")
 	page2.BackgroundColor3 = Color3.fromRGB(240,240,240)
-	page2.BackgroundTransparency = 0.1
+	page2.BackgroundTransparency = 1
 	page2.Position = UDim2.new(0,0,0.117,0)
-	page2.Size = UDim2.new(1,0,0.221,0)
+	page2.Size = UDim2.new(1,0,1,0)
 	page2.Visible = false
 	page2.Parent = frame
+	
+	page2_uilistlayout = Instance.new("UIListLayout")
+	page2_uilistlayout.SortOrder = "LayoutOrder"
+	page2_uilistlayout.Parent = page2
 	
 	if game.PlaceId == 6677985923 then
 		page2_button1 = Instance.new("TextButton")
