@@ -327,7 +327,7 @@ else
 		page2_button1.TextScaled = true
 		page2_button1.TextColor3 = Color3.fromRGB(255,255,255)
 		page2_button1.TextStrokeTransparency = 0
-		page2_button1.Parent = page1
+		page2_button1.Parent = page2
 		
 		page2_button1.MouseButton1Click:Connect(function()
 			for i,v in pairs(game.Players:GetChildren()) do
@@ -347,7 +347,7 @@ else
 		page2_button2.TextScaled = true
 		page2_button2.TextColor3 = Color3.fromRGB(255,255,255)
 		page2_button2.TextStrokeTransparency = 0
-		page2_button2.Parent = page1
+		page2_button2.Parent = page2
 		
 		page2_button2.MouseButton1Click:Connect(function()
 
