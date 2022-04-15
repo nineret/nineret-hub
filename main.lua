@@ -594,8 +594,8 @@ wait(0.001)
 		if game.PlaceId == 6677985923 then
 			if page2_button3_toggle == true then
 				team_name = game.Players.LocalPlayer.Team
-				ty_ = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons:FindFirstChild(team_name)
-				ty_but = ty_:FindFirstChild("P1 Stuff").Buttons
+				ty = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons:FindFirstChild(team_name)
+				ty_but = ty:FindFirstChild("P1 Stuff").Buttons
 				for i,v in pairs(ty_but:GetChildren()) do
 					if v.Name ~= "Insane Upgrader" or v.Name ~= "Millionaire Maker - $1M/SECOND!" then
 						wait(0.001)
