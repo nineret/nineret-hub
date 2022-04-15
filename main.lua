@@ -438,7 +438,7 @@ page4_desc.Parent = page4
 page4_desc.Visible = true
 
 page4_button1 = Instance.new("TextButton")
-page4_button1.Position = UDim2.new(0,0,0.617,0)
+page4_button1.Position = UDim2.new(0,0,0.817,0)
 page4_button1.Size = UDim2.new(1,0,0.4,0)
 page4_button1.Text = "Destroy GUI/HUD"
 page4_button1.Font = "Cartoon"
@@ -594,7 +594,7 @@ wait(0.001)
 		if game.PlaceId == 6677985923 then
 			if page2_button3_toggle == true then
 				team_name = game.Players.LocalPlayer.Team
-				ty_ = game.Workspace["Legend's2P Tycoon Kit"].Tycoons[team.name]
+				ty_ = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons[team_name]
 				ty_but = ty_["P1 Stuff"].Buttons
 				for i,v in pairs(ty_but:GetChildren()) do
 					if v.Name ~= "Insane Upgrader" or v.Name ~= "Millionaire Maker - $1M/SECOND!" then
