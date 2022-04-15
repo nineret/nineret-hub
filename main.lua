@@ -319,19 +319,48 @@ else
 	page2.Parent = frame
 	
 	if game.PlaceId == 6677985923 then
-		page1_button1 = Instance.new("TextButton")
-		page1_button1.Size = UDim2.new(1,0,0.05,0)
-		page1_button1.Text = "Free Donation. (LINKVERSE)"
-		page1_button1.Font = "Cartoon"
+		page2_button1 = Instance.new("TextButton")
+		page2_button1.Size = UDim2.new(1,0,0.05,0)
+		page2_button1.Text = "Kill ALL"
+		page2_button1.Font = "Cartoon"
 		page1_button1.BackgroundTransparency = 0.5
-		page1_button1.TextScaled = true
-		page1_button1.TextColor3 = Color3.fromRGB(255,255,255)
-		page1_button1.TextStrokeTransparency = 0
-		page1_button1.Parent = page1
+		page2_button1.TextScaled = true
+		page2_button1.TextColor3 = Color3.fromRGB(255,255,255)
+		page2_button1.TextStrokeTransparency = 0
+		page2_button1.Parent = page1
 		
-		page1_button1.MouseButton1Click:Connect(function()
-		
+		page2_button1.MouseButton1Click:Connect(function()
+			for i,v in pairs(game.Players:GetChildren()) do
+				if v.Name ~= game.Players.LocalPlayer.Name then
+					game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.ClassicSword)	
+					game.Players.LocalPlayer.Character.Torso.CFrame = v.Character.Torso.CFrame
+					wait(1)
+				end
+			end
 		end)
+		
+		page2_button2 = Instance.new("TextButton")
+		page2_button2.Size = UDim2.new(1,0,0.05,0)
+		page2_button2.Text = "INF MONEY"
+		page2_button2.Font = "Cartoon"
+		page2_button2.BackgroundTransparency = 0.5
+		page2_button2.TextScaled = true
+		page2_button2.TextColor3 = Color3.fromRGB(255,255,255)
+		page2_button2.TextStrokeTransparency = 0
+		page2_button2.Parent = page1
+		
+		page2_button2.MouseButton1Click:Connect(function()
+
+			local args = {
+				[1] = "Cash",
+				[2] = 1000000000
+			}
+
+			game:GetService("ReplicatedStorage").Events.CrateClaim:FireServer(unpack(args))
+
+		end)
+		
+		
 	end
 	
 	
