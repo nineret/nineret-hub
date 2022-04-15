@@ -32,8 +32,8 @@ picture_button6 = "rbxassetid://43990460"
 frame = Instance.new("Frame")
 frame.BackgroundColor3 = Color3.fromRGB(125,125,125)
 frame.BackgroundTransparency = 0.1
-frame.Size = UDim2.new(0.319,0,0.539,0)
-frame.Position = UDim2.new(-0.5,0,0.461,0)
+frame.Size = UDim2.new(0.169,0,0.326,0)
+frame.Position = UDim2.new(-0.5,0,0.674,0)
 frame.Parent = main
 
 --[[ second//menu frame ]]--
@@ -141,7 +141,7 @@ menu_button.ResampleMode = "Pixelated"
 
 new_tween:Play() ]]--
 
-frame:TweenPosition(UDim2.new(-0.325, 0, 0.461, 0), nil, nil, 0.5)
+frame:TweenPosition(UDim2.new(-0.1693, 0, 0.674, 0), nil, nil, 0.5)
 
 --[[ page 1 ]]--
 
@@ -167,33 +167,37 @@ page1.Visible = true
 page1.Parent = frame
 
 page1_uilistlayout = Instance.new("UIListLayout")
+page1_uilistlayout.SortOrder = "LayoutOrder"
 page1_uilistlayout.Parent = page1
 
 page1_text1 = Instance.new("TextLabel")
+page1_text1.Name = "a"
 page1_text1.Size = UDim2.new(1,0,0.05,0)
 page1_text1.Text = "This HUB is free, no paid or LINKVERSE requirement."
 page1_text1.Font = "Cartoon"
-page1_text1.BackgroundTransparency = 0.5
+page1_text1.BackgroundTransparency = 0.1
 page1_text1.TextScaled = true
 page1_text1.TextColor3 = Color3.fromRGB(255,255,255)
 page1_text1.TextStrokeTransparency = 0
 page1_text1.Parent = page1
 
 page1_text2 = Instance.new("TextLabel")
+page1_text2.Name = "a"
 page1_text2.Size = UDim2.new(1,0,0.05,0)
 page1_text2.Text = "To use script , goto second page below."
 page1_text2.Font = "Cartoon"
-page1_text2.BackgroundTransparency = 0.5
+page1_text2.BackgroundTransparency = 0.1
 page1_text2.TextScaled = true
 page1_text2.TextColor3 = Color3.fromRGB(255,255,255)
 page1_text2.TextStrokeTransparency = 0
 page1_text2.Parent = page1
 
 page1_text3 = Instance.new("TextLabel")
+page1_text3.Name = "a"
 page1_text3.Size = UDim2.new(1,0,0.05,0)
 page1_text3.Text = "Donation Button. (LINK)"
 page1_text3.Font = "Cartoon"
-page1_text3.BackgroundTransparency = 0.5
+page1_text3.BackgroundTransparency = 0.1
 page1_text3.TextScaled = true
 page1_text3.TextColor3 = Color3.fromRGB(255,255,255)
 page1_text3.TextStrokeTransparency = 0
@@ -314,6 +318,24 @@ else
 	page2.Visible = false
 	page2.Parent = frame
 	
+	if game.PlaceId == 6677985923 then
+		page1_button1 = Instance.new("TextButton")
+		page1_button1.Size = UDim2.new(1,0,0.05,0)
+		page1_button1.Text = "Free Donation. (LINKVERSE)"
+		page1_button1.Font = "Cartoon"
+		page1_button1.BackgroundTransparency = 0.5
+		page1_button1.TextScaled = true
+		page1_button1.TextColor3 = Color3.fromRGB(255,255,255)
+		page1_button1.TextStrokeTransparency = 0
+		page1_button1.Parent = page1
+		
+		page1_button1.MouseButton1Click:Connect(function()
+		
+		end)
+	end
+	
+	
+	
 end
 
 
@@ -370,10 +392,10 @@ page4_button1.Parent = page4
 -- [[ button function ]]--
 menu_button.MouseButton1Click:Connect(function()
 	if toggle == false then
-		frame:TweenPosition(UDim2.new(0, 0, 0.461, 0), nil, nil, 0.5)
+		frame:TweenPosition(UDim2.new(0, 0, 0.671, 0), nil, nil, 0.5)
 		toggle = true
 	else
-		frame:TweenPosition(UDim2.new(-0.325, 0, 0.461, 0), nil, nil, 0.5)
+		frame:TweenPosition(UDim2.new(-0.1693, 0, 0.671, 0), nil, nil, 0.5)
 		toggle = false
 	end
 end)
@@ -455,12 +477,12 @@ page4_button1.MouseButton1Click:Connect(function()
 		main:Destroy()
 end)
 	
-page4_button1.n4.MouseEnter:Connect(function()
+page4_button1.MouseEnter:Connect(function()
 		desc.Visible = true
 		desc_text.Text = "Permant Destroy GUI//HUD."
 end)
 	
-page4_button1.n4.MouseLeave:Connect(function()
+page4_button1.MouseLeave:Connect(function()
 		desc.Visible = false
 end)
 
