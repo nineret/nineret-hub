@@ -334,6 +334,7 @@ else
 		page2_button1.Parent = page2
 		
 		page2_button1.MouseButton1Click:Connect(function()
+			oldCFrame = game.Players.LocalPlayer.Character.Torso.CFrame
 			for i,v in pairs(game.Players:GetChildren()) do
 				if v.Name ~= game.Players.LocalPlayer.Name then
 					game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.ClassicSword)	
@@ -341,6 +342,7 @@ else
 					wait(1)
 				end
 			end
+			game.Players.LocalPlayer.Character.Torso.CFrame = oldCFrame
 		end)
 		
 		page2_button2 = Instance.new("TextButton")
@@ -361,6 +363,28 @@ else
 			}
 
 			game:GetService("ReplicatedStorage").Events.CrateClaim:FireServer(unpack(args))
+
+		end)
+		
+				
+		page2_button3 = Instance.new("TextButton")
+		page2_button3.Size = UDim2.new(1,0,0.05,0)
+		page2_button3.Text = "AUTO UPGRADER (OFF)"
+		page2_button3.Font = "Cartoon"
+		page2_button3.BackgroundTransparency = 0.5
+		page2_button3.TextScaled = true
+		page2_button3.TextColor3 = Color3.fromRGB(255,255,255)
+		page2_button3.TextStrokeTransparency = 0
+		page2_button3.Parent = page2
+		
+		page2_button3_toggle = false
+		page2_button3.MouseButton1Click:Connect(function()
+
+			if page2_button3_toggle == false then
+				page2_button3_toggle = true
+			else
+				page2_button3_toggle = false
+			end
 
 		end)
 		
@@ -559,3 +583,25 @@ end)
 -- [[function]] --
 
 
+-- [[while true do]]--
+
+while true do
+wait(0.001)
+
+	if is_it_whitelist == true then
+		if game.PlaceId == 6677985923 then
+			if page2_button3_toggle == true then
+				team_name = game.Players.LocalPlayer.Team
+				ty_ = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons[team.name]
+				ty_but = ty_["P1 Stuff"].Buttons
+				for i,v in pairs(ty_but:GetChildren()) do
+					if v.Name ~= "Insane Upgrader" or v.Name ~= "Millionaire Maker - $1M/SECOND!" then
+						wait(0.001)
+						game.Players.LocalPlayer.Character.Torso.CFrame = v.Head.CFrame
+					end
+				end
+			end
+		end
+	end
+
+end
