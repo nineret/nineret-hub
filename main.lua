@@ -593,13 +593,17 @@ wait(0.001)
 	if is_it_whitelist == true then
 		if game.PlaceId == 6677985923 then
 			if page2_button3_toggle == true then
-				team_name = game.Players.LocalPlayer.Team
-				ty = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons:FindFirstChild(team_name)
-				ty_but = ty:FindFirstChild("P1 Stuff").Buttons
-				for i,v in pairs(ty_but:GetChildren()) do
-					if v.Name ~= "Insane Upgrader" or v.Name ~= "Millionaire Maker - $1M/SECOND!" then
-						wait(0.001)
-						game.Players.LocalPlayer.Character.Torso.CFrame = v.Head.CFrame
+				team_color = game.Players.LocalPlayer.TeamColor
+				ty = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons
+				for i,v in pairs(ty:GetChildren()) do
+					if v.TeamColor.Value == team_color then
+						ty_but = ty:FindFirstChild("P1 Stuff").Buttons
+						for i1,v1 in pairs(ty_but:GetChildren()) do
+							if v1.Name ~= "Insane Upgrader" or v1.Name ~= "Millionaire Maker - $1M/SECOND!" then
+								wait(0.001)
+								game.Players.LocalPlayer.Character.Torso.CFrame = v1.Head.CFrame
+							end
+						end
 					end
 				end
 			end
