@@ -597,7 +597,7 @@ wait(0.001)
 				ty = game.Workspace["Legend's 2P Tycoon Kit"].Tycoons
 				for i,v in pairs(ty:GetChildren()) do
 					if v.TeamColor.Value == team_color then
-						ty_but = ty:FindFirstChild("P1 Stuff").Buttons
+						ty_but = v:FindFirstChild("P1 Stuff").Buttons
 						for i1,v1 in pairs(ty_but:GetChildren()) do
 							if v1.Name ~= "Insane Upgrader" or v1.Name ~= "Millionaire Maker - $1M/SECOND!" then
 								wait(0.001)
